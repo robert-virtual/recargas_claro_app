@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AjustePage extends StatefulWidget {
-  const AjustePage({Key? key}) : super(key: key);
+class AjustePages extends StatefulWidget {
+  const AjustePages({Key? key}) : super(key: key);
 
   @override
-  _AjustePageState createState() => _AjustePageState();
+  _AjustePagesState createState() => _AjustePagesState();
 }
 
-class _AjustePageState extends State<AjustePage> {
+class _AjustePagesState extends State<AjustePages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
