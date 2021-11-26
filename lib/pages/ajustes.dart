@@ -20,7 +20,9 @@ class _AjustePagesState extends State<AjustePages> {
 
   void cargarpin() async {
     final pref = await SharedPreferences.getInstance();
-    pin.text = pref.getString("pin") ?? "";
+    setState(() {
+      pin.text = pref.getString("pin") ?? "";
+    });
   }
 
   @override
@@ -31,7 +33,7 @@ class _AjustePagesState extends State<AjustePages> {
       ),
       body: Column(
         children: [
-          Text(pin.text),
+          Text("pin: " + pin.text),
           TextField(
             decoration: InputDecoration(hintText: "Ingrese su Pin."),
             controller: pin,
@@ -42,6 +44,8 @@ class _AjustePagesState extends State<AjustePages> {
         onPressed: () async {
           final pref = await SharedPreferences.getInstance();
           pref.setString("pin", pin.text);
+          final snackBar = SnackBar(content: Text("Pin Guardado"));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: Icon(Icons.save),
       ),
