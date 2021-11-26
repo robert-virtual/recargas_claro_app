@@ -4,33 +4,45 @@
 
 > Encargados:
 
+- Olman Martinez
+- Roberto Castillo
+
 ![menu](./screenshots/menu.jpeg)
 
 ## Recargas
 
 > Encargados:
-> ![menu](./screenshots/recargas.jpeg)
+
+- Amy Garrido
+- Keren Castellanos
+
+![menu](./screenshots/recargas.jpeg)
 
 ## Paquetes
 
 > Encargados:
 
+- Caled Andrade
+- Leslie ordoñes
+
 ![menu](./screenshots/paquetes.jpeg)
+
+![menu](./screenshots/paquete_seleccionado.jpeg)
 
 ## Selecionar Paquete
 
 > Encargados:
 
+- Roberto Castillo
+- olman Martinez
+
 ![menu](./screenshots/seleccionar_paquete.jpeg)
-
-## Paquete Selecionado
-
-> Encargados:
-
-![menu](./screenshots/paquete_seleccionado.jpeg)
 
 ## Ajustes
 
 > Encargados:
+
+- Julisa delCid
+- Roberto Castillo
 
 ![menu](./screenshots/ajustes.jpeg)
