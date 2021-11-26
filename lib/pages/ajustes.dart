@@ -32,11 +32,15 @@ class _AjustePagesState extends State<AjustePages> {
         title: const Text("Ajustes"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("pin: " + pin.text),
-          TextField(
-            decoration: InputDecoration(hintText: "Ingrese su Pin."),
-            controller: pin,
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: TextField(
+              decoration: InputDecoration(hintText: "Ingrese su Pin."),
+              controller: pin,
+            ),
           )
         ],
       ),
