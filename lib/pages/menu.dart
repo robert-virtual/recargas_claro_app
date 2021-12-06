@@ -20,6 +20,7 @@ class _MenuState extends State<Menu> {
         children: [RecargasPage(), PaquetesPage(), AjustePages()],
       ),
       bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: false,
           currentIndex: paginaActual,
           onTap: (index) {
             setState(() {

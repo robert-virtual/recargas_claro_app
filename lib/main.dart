@@ -9,7 +9,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Recargas App',
-      home: Menu()
+      home: Menu(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple
+      ),
     );
   }
 }
