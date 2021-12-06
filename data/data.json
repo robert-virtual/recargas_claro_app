@@ -1,0 +1,152 @@
+{
+  "Ilimitados": [
+    {
+      "cod": "3*11",
+      "description": "Llamadas Ilimitadas a Claro e Internet Ilimitado",
+      "duration": "3 Horas",
+      "price": 15,
+      "title": "Internet Ilimitado"
+    },
+    {
+      "cod": "3*8",
+      "description": "Llamadas Ilimitadas a Claro y 20 Minutos a Todas las Redes, Internet Ilimitado",
+      "duration": "1 Dia",
+      "price": 40,
+      "title": "Internet Ilimitado"
+    },
+    {
+      "cod": "3*9",
+      "description": "Llamadas Ilimitadas a Claro y 40 Minutos a Todas las Redes, Internet Ilimitado",
+      "duration": "3 Dias",
+      "price": 70,
+      "title": "Internet Ilimitado"
+    },
+    {
+      "cod": "3*10",
+      "description": "Llamadas Ilimitadas a Claro y 75 Minutos a Todas las Redes, Internet Ilimitado",
+      "duration": "5 Dias",
+      "price": 150,
+      "title": "Internet Ilimitado"
+    }
+  ],
+  "llamadas": [
+    {
+      "cod": "5*3",
+      "description": "A España",
+      "duration": "1 Dia",
+      "price": 30,
+      "title": "5 Minutos"
+    },
+    {
+      "cod": "5*5",
+      "description": "Todas las Redes Y USA",
+      "duration": "1 Dia",
+      "price": 17,
+      "title": "15 Minutos"
+    },
+    {
+      "cod": "5*6",
+      "description": "Todas las Redes Y USA",
+      "duration": "2 Dias",
+      "price": 25,
+      "title": "30 Minutos"
+    },
+    {
+      "cod": "5*7",
+      "description": "Todas las Redes Y USA",
+      "duration": "1 Dias",
+      "price": 35,
+      "title": "45 Minutos"
+    },
+    {
+      "cod": "5*8",
+      "description": "Todas las Redes Y USA",
+      "duration": "3 Dias",
+      "price": 45,
+      "title": "60 Minutos"
+    },
+    {
+      "cod": "5*9",
+      "description": "Todas las Redes Y USA",
+      "duration": "3 Dias",
+      "price": 60,
+      "title": "100 Minutos"
+    },
+    {
+      "cod": "5*10",
+      "description": "A Mexico",
+      "duration": "1 Dia",
+      "price": 22,
+      "title": "5 Minutos"
+    }
+  ],
+  "redes": [
+    {
+      "cod": "7*1",
+      "description": "Chat Ilimitado",
+      "duration": "1 Dia",
+      "price": 13,
+      "title": "WhatsApp"
+    },
+    {
+      "cod": "7*2",
+      "description": "Incluye chat Messenger",
+      "duration": "1 Dia",
+      "price": 16,
+      "title": "Facebook"
+    }
+  ],
+  "super": [
+    {
+      "cod": "9*1",
+      "description": "300 MB, 10 Min a Otras Redes, 60 Min a Claro, 60 SMS a Todas las Redes y 1 Amigo Favorito",
+      "duration": "1 Dia",
+      "price": 15,
+      "title": "Super Recarga"
+    },
+    {
+      "cod": "9*2",
+      "description": "1.5 GB, 15 Min a Otras Redes y USA,Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
+      "duration": "1 Dia",
+      "price": 25,
+      "title": "Super Recarga"
+    },
+    {
+      "cod": "9*3",
+      "description": "5 GB, 30 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
+      "duration": "3 Dias",
+      "price": 50,
+      "title": "Super Recarga"
+    },
+    {
+      "cod": "9*4",
+      "description": "10 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
+      "duration": "7 Dias",
+      "price": 100,
+      "title": "Super Recarga"
+    },
+    {
+      "cod": "9*5",
+      "description": "10 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
+      "duration": "15 Dias",
+      "price": 250,
+      "title": "Super Recarga"
+    }
+  ],
+  "mensajes": [
+    {
+      "cod": "1*9",
+      "description": "Disponibles con o sin Internet",
+      "duration": "1 Dia",
+      "price": 13,
+      "title": "160 Mensajes"
+    },
+    {
+      "cod": "1*10",
+      "description": "Disponibles con o sin Internet",
+      "duration": "2 Dias",
+      "price": 24,
+      "title": "350 Mensajes"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recargas_claro_app/pages/ajustes.dart';
 import 'package:recargas_claro_app/pages/paquetes.dart';
+import 'package:recargas_claro_app/pages/recargas.dart';
 
 class Menu extends StatefulWidget {
   Menu({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _MenuState extends State<Menu> {
     return Scaffold(
       body: IndexedStack(
         index: paginaActual,
-        children: [AjustePages(), PaquetesPage(), AjustePages()],
+        children: [RecargasPage(), PaquetesPage(), AjustePages()],
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: paginaActual,

@@ -13,7 +13,6 @@ class _AjustePagesState extends State<AjustePages> {
   String pinguardado = "";
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     cargarpin();
   }
@@ -34,7 +33,7 @@ class _AjustePagesState extends State<AjustePages> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("pin: " + pin.text),
+          Text("Pin: " + pin.text,style: TextStyle(fontSize: 25),),
           Padding(
             padding: const EdgeInsets.all(20),
             child: TextField(
@@ -46,8 +45,11 @@ class _AjustePagesState extends State<AjustePages> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+
           final pref = await SharedPreferences.getInstance();
-          pref.setString("pin", pin.text);
+          setState(() {
+            pref.setString("pin", pin.text);
+          });
           final snackBar = SnackBar(content: Text("Pin Guardado"));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
