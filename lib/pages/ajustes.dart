@@ -27,9 +27,7 @@ class _AjustePagesState extends State<AjustePages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Ajustes"),
-      ),
+     
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

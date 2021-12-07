@@ -31,9 +31,8 @@ class _PaquetesPageState extends State<PaquetesPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        foregroundColor: Colors.blue,
-        title: const Text("Paquetes"),
-        bottom: PreferredSize(
+        foregroundColor: Theme.of(context).primaryColor,
+        title: PreferredSize(
           preferredSize: const Size.fromHeight(48.0),
           child: inicializado == false
               ? const Text("")
@@ -108,14 +107,14 @@ class _PaquetesPageState extends State<PaquetesPage> {
                 ),
                 InkWell(
                   onTap: telefono.clear,
-                  child: Icon(Icons.close),
+                  child: const Icon(Icons.close),
                 )
               ],
             ),
           ),
           FloatingActionButton(
             onPressed: enviarRecarga,
-            child: Icon(Icons.send),
+            child: const Icon(Icons.send),
           )
         ],
       ),
@@ -165,8 +164,8 @@ class _PaquetesPageState extends State<PaquetesPage> {
       return;
     }
 
-    // final cadena = "*135*${telefono.text}*${selecioada!.cod}*$pin#";
-    FlutterPhoneDirectCaller.callNumber(telefono.text);
+    final cadena = "*135*${telefono.text}*${selecioada!.cod}*$pin#";
+    await FlutterPhoneDirectCaller.callNumber(cadena);
   }
 
   obtenerRecargas() async {
@@ -178,9 +177,10 @@ class _PaquetesPageState extends State<PaquetesPage> {
 
   Widget item({required Recarga recarga, bool close = false}) {
     return Card(
-      margin: EdgeInsets.all(10),
+      elevation: 10.0,
+      margin: const EdgeInsets.all(10),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,14 +205,14 @@ class _PaquetesPageState extends State<PaquetesPage> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               recarga.description,
               style: TextStyle(color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -220,11 +220,11 @@ class _PaquetesPageState extends State<PaquetesPage> {
               children: [
                 Text(
                   recarga.duration,
-                  style: TextStyle(color: Colors.blue),
+                  style:  TextStyle(color:Theme.of(context).primaryColor ),
                 ),
                 Text(
                   "Lps. ${recarga.price}",
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(color:Theme.of(context).primaryColor),
                 ),
               ],
             )

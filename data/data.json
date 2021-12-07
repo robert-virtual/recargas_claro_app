@@ -10,21 +10,21 @@
     {
       "cod": "3*8",
       "description": "Llamadas Ilimitadas a Claro y 20 Minutos a Todas las Redes, Internet Ilimitado",
-      "duration": "1 Dia",
-      "price": 40,
+      "duration": "2 Dia",
+      "price": 50,
       "title": "Internet Ilimitado"
     },
     {
       "cod": "3*9",
       "description": "Llamadas Ilimitadas a Claro y 40 Minutos a Todas las Redes, Internet Ilimitado",
-      "duration": "3 Dias",
-      "price": 70,
+      "duration": "4 Dias",
+      "price": 80,
       "title": "Internet Ilimitado"
     },
     {
       "cod": "3*10",
       "description": "Llamadas Ilimitadas a Claro y 75 Minutos a Todas las Redes, Internet Ilimitado",
-      "duration": "5 Dias",
+      "duration": "7 Dias",
       "price": 150,
       "title": "Internet Ilimitado"
     }
@@ -80,7 +80,7 @@
       "title": "5 Minutos"
     }
   ],
-  "redes": [
+  "Redes Sociales": [
     {
       "cod": "7*1",
       "description": "Chat Ilimitado",
@@ -96,7 +96,7 @@
       "title": "Facebook"
     }
   ],
-  "super": [
+  "Super Recargas": [
     {
       "cod": "9*1",
       "description": "300 MB, 10 Min a Otras Redes, 60 Min a Claro, 60 SMS a Todas las Redes y 1 Amigo Favorito",
@@ -106,34 +106,41 @@
     },
     {
       "cod": "9*2",
-      "description": "1.5 GB, 15 Min a Otras Redes y USA,Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
+      "description": "2 GB, 15 Min a Otras Redes y USA,Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
       "duration": "1 Dia",
       "price": 25,
       "title": "Super Recarga"
     },
     {
       "cod": "9*3",
-      "description": "5 GB, 30 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
+      "description": "6 GB, 30 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook y 1 Amigo Favorito",
       "duration": "3 Dias",
       "price": 50,
       "title": "Super Recarga"
     },
     {
       "cod": "9*4",
-      "description": "10 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
+      "description": "12 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
       "duration": "7 Dias",
       "price": 100,
       "title": "Super Recarga"
     },
     {
       "cod": "9*5",
-      "description": "10 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
+      "description": "15 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
+      "duration": "10 Dias",
+      "price": 150,
+      "title": "Super Recarga"
+    },
+    {
+      "cod": "9*6",
+      "description": "25 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
       "duration": "15 Dias",
-      "price": 250,
+      "price": 220,
       "title": "Super Recarga"
     }
   ],
-  "mensajes": [
+  "Paquetes de Mensajes": [
     {
       "cod": "1*9",
       "description": "Disponibles con o sin Internet",

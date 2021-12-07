@@ -15,12 +15,14 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: paginaActual,
-        children: [RecargasPage(), PaquetesPage(), AjustePages()],
+      body: SafeArea(
+        child: IndexedStack(
+          index: paginaActual,
+          children: [RecargasPage(), PaquetesPage(), AjustePages()],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          showUnselectedLabels: false,
+        showSelectedLabels: false,
           currentIndex: paginaActual,
           onTap: (index) {
             setState(() {
