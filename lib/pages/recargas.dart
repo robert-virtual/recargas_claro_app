@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:recargas_claro_app/models/venta.dart';
+import 'package:recargas_claro_app/providers/ventas_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RecargasPage extends StatefulWidget {
@@ -12,25 +14,32 @@ class RecargasPage extends StatefulWidget {
 class _RecargasPageState extends State<RecargasPage> {
   final pinController = TextEditingController();
   final telefono = TextEditingController();
-  List<String> common = List.generate(15, (i) => "${25 * i}");
-  String? cantidad;
+  final cantidad = TextEditingController();
+  List<String> common = List.generate(15, (i) => "${25 * (i + 1)}");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                onChanged: (text) {
-                  setState(() {
-                    cantidad = text;
-                  });
-                },
-                decoration: InputDecoration(hintText: "Otra cantidad"),
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      maxLength: 3,
+                      onChanged: (value) {
+                        setState(() {}); /*actualiza */
+                      },
+                      controller: cantidad,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                          hintText: "Otra cantidad", counterText: ""),
+                    ),
+                  ),
+                  InkWell(onTap: cantidad.clear, child: const Icon(Icons.close))
+                ],
               ),
             ),
             SingleChildScrollView(
@@ -43,10 +52,10 @@ class _RecargasPageState extends State<RecargasPage> {
                           common.length,
                           (i) => ChoiceChip(
                                 label: Text(common[i]),
-                                selected: common[i] == cantidad,
+                                selected: common[i] == cantidad.text,
                                 onSelected: (selected) {
                                   setState(() {
-                                    cantidad = common[i];
+                                    cantidad.text = common[i];
                                   });
                                 },
                               ))),
@@ -59,8 +68,8 @@ class _RecargasPageState extends State<RecargasPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 10),
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10)),
@@ -83,20 +92,26 @@ class _RecargasPageState extends State<RecargasPage> {
                   ),
                   InkWell(
                     onTap: telefono.clear,
-                    child: Icon(Icons.close),
+                    child: const Icon(Icons.close),
                   )
                 ],
               ),
             ),
             FloatingActionButton(
               onPressed: enviarRecarga,
-              child: Icon(Icons.send),
+              child: const Icon(Icons.send),
             )
           ],
         ));
   }
 
   void enviarRecarga() async {
+    if (telefono.text.isEmpty || cantidad.text.isEmpty) {
+      const snackBar = SnackBar(content: Text("Uno o mas campos vacios"));
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      return;
+    }
     // final
     final pref = await SharedPreferences.getInstance();
     String? pin = pref.getString('pin');
@@ -110,7 +125,7 @@ class _RecargasPageState extends State<RecargasPage> {
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text("ingrese su pin"),
+                  const Text("Ingrese su pin"),
                   TextField(
                     controller: pinController,
                     decoration: const InputDecoration(hintText: "pin"),
@@ -138,7 +153,42 @@ class _RecargasPageState extends State<RecargasPage> {
       return;
     }
 
-    final cadena = "*135*2*2*${telefono.text}*$cantidad*$pin#";
+    final cadena = "*135*1*${telefono.text}*$cantidad*$pin#";
     await FlutterPhoneDirectCaller.callNumber(cadena);
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Recargas"),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text("Se envio la Recarga?"),
+                Text("Monto: ${cantidad.text}"),
+                Text("Telefono: ${telefono.text}"),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("No")),
+              TextButton(
+                  onPressed: () async {
+                    await ventasProvider.addVenta(Venta(
+                        cliente: telefono.text,
+                        descripcion: "Recarga",
+                        monto: double.parse(cantidad.text)));
+
+                    telefono.clear();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Si"))
+            ],
+          );
+        });
   }
 }

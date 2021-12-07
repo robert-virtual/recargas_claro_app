@@ -15,6 +15,11 @@ class _RecargasProvider {
     Map<String, List<dynamic>> mapa = Map.from(obj);
     Map<String, List<Recarga>> listaElementos = {};
 
+    /*
+    convierte la lista dinamica a lista de recargas
+    agrega los elementos a la lista 
+    "listaElementos" a partir del "mapa"
+     */
     mapa.forEach((key, lista) {
       listaElementos[key] =
           List.generate(lista.length, (i) => Recarga.fromJson(lista[i]));

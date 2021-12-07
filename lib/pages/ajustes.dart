@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:recargas_claro_app/pages/historial.dart';
+import 'package:recargas_claro_app/pages/pin.dart';
 
 class AjustePages extends StatefulWidget {
   const AjustePages({Key? key}) : super(key: key);
@@ -9,50 +10,38 @@ class AjustePages extends StatefulWidget {
 }
 
 class _AjustePagesState extends State<AjustePages> {
-  final pin = TextEditingController();
-  String pinguardado = "";
-  @override
-  void initState() {
-    super.initState();
-    cargarpin();
-  }
+ 
 
-  void cargarpin() async {
-    final pref = await SharedPreferences.getInstance();
-    setState(() {
-      pin.text = pref.getString("pin") ?? "";
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Pin: " + pin.text,style: TextStyle(fontSize: 25),),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: TextField(
-              decoration: InputDecoration(hintText: "Ingrese su Pin."),
-              controller: pin,
-            ),
-          )
+          ListTile(
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              /*navefar a otra pagina*/
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => HistorialPage()));
+            },
+            title: const Text("Historial"),
+          ),
+          const Divider(),
+          ListTile(
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => PinPage()));
+            },
+            title: const Text("Pin"),
+          ),
+          const Divider(),
+          
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-
-          final pref = await SharedPreferences.getInstance();
-          setState(() {
-            pref.setString("pin", pin.text);
-          });
-          final snackBar = SnackBar(content: Text("Pin Guardado"));
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        },
-        child: Icon(Icons.save),
-      ),
+     
     );
   }
 }

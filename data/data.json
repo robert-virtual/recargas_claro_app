@@ -80,7 +80,7 @@
       "title": "5 Minutos"
     }
   ],
-  "Redes Sociales": [
+  "Redes": [
     {
       "cod": "7*1",
       "description": "Chat Ilimitado",
@@ -96,7 +96,7 @@
       "title": "Facebook"
     }
   ],
-  "Super Recargas": [
+  "Super": [
     {
       "cod": "9*1",
       "description": "300 MB, 10 Min a Otras Redes, 60 Min a Claro, 60 SMS a Todas las Redes y 1 Amigo Favorito",
@@ -140,7 +140,7 @@
       "title": "Super Recarga"
     }
   ],
-  "Paquetes de Mensajes": [
+  "Mensajes": [
     {
       "cod": "1*9",
       "description": "Disponibles con o sin Internet",

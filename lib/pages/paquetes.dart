@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:recargas_claro_app/models/recarga.dart';
+import 'package:recargas_claro_app/models/venta.dart';
 import 'package:recargas_claro_app/providers/recargas_provider.dart';
+import 'package:recargas_claro_app/providers/ventas_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaquetesPage extends StatefulWidget {
@@ -17,8 +19,8 @@ class _PaquetesPageState extends State<PaquetesPage> {
   final pinController = TextEditingController();
   String mostrando = "Ilimitados";
   bool inicializado = false;
-  Recarga?
-      selecioada; //Recarga(cod: "cod", price: 20, title: "title", description: "description", duration: "duration");
+  //Recarga(cod: "cod", price: 20, title: "title", description: "description", duration: "duration");
+  Recarga? selecioada;
   @override
   void initState() {
     super.initState();
@@ -32,32 +34,28 @@ class _PaquetesPageState extends State<PaquetesPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         foregroundColor: Theme.of(context).primaryColor,
-        title: PreferredSize(
-          preferredSize: const Size.fromHeight(48.0),
-          child: inicializado == false
-              ? const Text("")
-              : SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(children: [
-                    Wrap(
-                      spacing: 4.0,
-                      children: List.generate(
-                          recargas.length,
-                          (i) => ChoiceChip(
-                                label: Text(recargas.keys.elementAt(i)),
-                                selected:
-                                    mostrando == recargas.keys.elementAt(i),
-                                onSelected: (bool seleteed) {
-                                  setState(() {
-                                    selecioada = null;
-                                    mostrando = recargas.keys.elementAt(i);
-                                  });
-                                },
-                              )),
-                    )
-                  ]),
-                ),
-        ),
+        title: inicializado == false
+            ? const Text("")
+            : SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(children: [
+                  Wrap(
+                    spacing: 4.0,
+                    children: List.generate(
+                        recargas.length,
+                        (i) => ChoiceChip(
+                              label: Text(recargas.keys.elementAt(i)),
+                              selected: mostrando == recargas.keys.elementAt(i),
+                              onSelected: (bool seleteed) {
+                                setState(() {
+                                  selecioada = null;
+                                  mostrando = recargas.keys.elementAt(i);
+                                });
+                              },
+                            )),
+                  )
+                ]),
+              ),
       ),
       body: selecioada != null
           ? Center(
@@ -65,6 +63,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
             )
           : inicializado == true
               ? ListView.builder(
+                  padding: const EdgeInsets.only(bottom: 100.0),
                   itemCount: recargas[mostrando]!.length,
                   itemBuilder: (context, i) {
                     return InkWell(
@@ -83,8 +82,8 @@ class _PaquetesPageState extends State<PaquetesPage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            margin: EdgeInsets.only(left: 10),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            margin: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(10)),
@@ -121,7 +120,23 @@ class _PaquetesPageState extends State<PaquetesPage> {
     );
   }
 
+  void showMensaje(String msg) {
+    final snackBar = SnackBar(content: Text(msg));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    return;
+  }
+
   void enviarRecarga() async {
+    if (selecioada == null) {
+      showMensaje("No ha seleccionado un paquete");
+      return;
+    }
+
+    if (telefono.text.isEmpty) {
+      showMensaje("No ha ingresado un numero de telefono");
+      return;
+    }
+
     // final
     final pref = await SharedPreferences.getInstance();
     String? pin = pref.getString('pin');
@@ -166,6 +181,40 @@ class _PaquetesPageState extends State<PaquetesPage> {
 
     final cadena = "*135*${telefono.text}*${selecioada!.cod}*$pin#";
     await FlutterPhoneDirectCaller.callNumber(cadena);
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Paquetes"),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text("Se envio el paquete?"),
+                Text("Monto: ${selecioada!.price}"),
+                Text("Telefono: ${telefono.text}"),
+              ],
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("No")),
+              TextButton(
+                  onPressed: () async {
+                    await ventasProvider.addVenta(Venta(
+                        cliente: telefono.text,
+                        descripcion: selecioada!.title,
+                        monto: selecioada!.price.toDouble()));
+                    telefono.clear();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Si"))
+            ],
+          );
+        });
   }
 
   obtenerRecargas() async {
@@ -201,7 +250,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
                           selecioada = null;
                         });
                       },
-                      icon: Icon(Icons.close)),
+                      icon: const Icon(Icons.close)),
                 )
               ],
             ),
@@ -210,7 +259,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
             ),
             Text(
               recarga.description,
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
             const SizedBox(
               height: 10,
@@ -220,11 +269,11 @@ class _PaquetesPageState extends State<PaquetesPage> {
               children: [
                 Text(
                   recarga.duration,
-                  style:  TextStyle(color:Theme.of(context).primaryColor ),
+                  style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
                 Text(
                   "Lps. ${recarga.price}",
-                  style: TextStyle(color:Theme.of(context).primaryColor),
+                  style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ],
             )
