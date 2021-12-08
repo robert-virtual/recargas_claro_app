@@ -5,7 +5,7 @@ import 'package:recargas_claro_app/providers/ventas_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RecargasPage extends StatefulWidget {
-  RecargasPage({Key? key}) : super(key: key);
+  const RecargasPage({Key? key}) : super(key: key);
 
   @override
   _RecargasPageState createState() => _RecargasPageState();
@@ -23,7 +23,7 @@ class _RecargasPageState extends State<RecargasPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           
-            Text("Recargas Comunes",style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 25),),
+            const Text("Recargas Comunes",style: TextStyle(fontSize: 25),),
             Container(
               padding: const EdgeInsets.all(10),
               decoration:  BoxDecoration(
@@ -38,7 +38,7 @@ class _RecargasPageState extends State<RecargasPage> {
                   )  
                 ],
               ),
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

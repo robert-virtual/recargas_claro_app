@@ -24,7 +24,7 @@ class _AjustePagesState extends State<AjustePages> {
             onTap: () {
               /*navefar a otra pagina*/
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => HistorialPage()));
+                  MaterialPageRoute(builder: (context) => const HistorialPage()));
             },
             title: const Text("Historial"),
           ),

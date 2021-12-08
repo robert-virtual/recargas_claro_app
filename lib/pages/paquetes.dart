@@ -8,7 +8,7 @@ import 'package:recargas_claro_app/widgets/recarga_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaquetesPage extends StatefulWidget {
-  PaquetesPage({Key? key}) : super(key: key);
+  const PaquetesPage({Key? key}) : super(key: key);
 
   @override
   _PaquetesPageState createState() => _PaquetesPageState();
