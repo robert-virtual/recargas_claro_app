@@ -1,3 +1,5 @@
+import 'package:recargas_claro_app/models/venta.dart';
+
 class Recarga {
   String cod;
   String title;
@@ -18,6 +20,15 @@ class Recarga {
       title: json["title"],
       description: json["description"],
       duration: json["duration"],
+    );
+  }
+  factory Recarga.fromVenta(Venta venta) {
+    return Recarga(
+      cod: "",
+      price: venta.monto.toInt(),
+      title: venta.descripcion,
+      description: "Fecha: "+venta.fecha.toString().split(" ")[0],
+      duration: "Cliente: "+venta.cliente,
     );
   }
 }

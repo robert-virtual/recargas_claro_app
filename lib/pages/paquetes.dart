@@ -4,6 +4,7 @@ import 'package:recargas_claro_app/models/recarga.dart';
 import 'package:recargas_claro_app/models/venta.dart';
 import 'package:recargas_claro_app/providers/recargas_provider.dart';
 import 'package:recargas_claro_app/providers/ventas_provider.dart';
+import 'package:recargas_claro_app/widgets/recarga_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaquetesPage extends StatefulWidget {
@@ -59,7 +60,15 @@ class _PaquetesPageState extends State<PaquetesPage> {
       ),
       body: selecioada != null
           ? Center(
-              child: item(recarga: selecioada!, close: true),
+              child: RecargaItem(
+                  recarga: selecioada!, 
+                  close: true,
+                  onPressed: () {
+                    setState(() {
+                      selecioada = null;
+                    });
+                  },
+              ),
             )
           : inicializado == true
               ? ListView.builder(
@@ -72,7 +81,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
                           selecioada = recargas[mostrando]![i];
                         });
                       },
-                      child: item(recarga: recargas[mostrando]![i]),
+                      child: RecargaItem(recarga: recargas[mostrando]![i]),
                     );
                   })
               : const Center(
@@ -224,62 +233,5 @@ class _PaquetesPageState extends State<PaquetesPage> {
     });
   }
 
-  Widget item({required Recarga recarga, bool close = false}) {
-    return Card(
-      elevation: 10.0,
-      margin: const EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  recarga.title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Visibility(
-                  visible: close,
-                  child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          selecioada = null;
-                        });
-                      },
-                      icon: const Icon(Icons.close)),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              recarga.description,
-              style: const TextStyle(color: Colors.grey),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  recarga.duration,
-                  style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-                Text(
-                  "Lps. ${recarga.price}",
-                  style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  
 }

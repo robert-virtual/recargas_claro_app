@@ -23,7 +23,7 @@ class _RecargasPageState extends State<RecargasPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           
-            const Text("Cantidades Comunes"),
+            Text("Recargas Comunes",style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 25),),
             Container(
               padding: const EdgeInsets.all(10),
               decoration:  BoxDecoration(
