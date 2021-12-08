@@ -22,46 +22,75 @@ class _RecargasPageState extends State<RecargasPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+          
+            const Text("Cantidades Comunes"),
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration:  BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow:  [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0,2)
+                  )  
+                ],
+              ),
+              margin: EdgeInsets.all(10),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Wrap(
+                        spacing: 4.0,
+                        children: List.generate(
+                            common.length,
+                            (i) => ChoiceChip(
+                                  label: Text(common[i]),
+                                  selected: common[i] == cantidad.text,
+                                  onSelected: (selected) {
+                                    setState(() {
+                                      cantidad.text = common[i];
+                                    });
+                                  },
+                                ))),
+                  ],
+                ),
+              ),
+            ),
+              Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      maxLength: 3,
-                      onChanged: (value) {
-                        setState(() {}); /*actualiza */
-                      },
-                      controller: cantidad,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                          hintText: "Otra cantidad", counterText: ""),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.5,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        maxLength: 3,
+                        onChanged: (value) {
+                          setState(() {}); /*actualiza */
+                        },
+                        controller: cantidad,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Otra cantidad",
+                            counterText: ""),
+                      ),
                     ),
-                  ),
-                  InkWell(onTap: cantidad.clear, child: const Icon(Icons.close))
-                ],
+                    InkWell(
+                        onTap: cantidad.clear, child: const Icon(Icons.close))
+                  ],
+                ),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Wrap(
-                      spacing: 4.0,
-                      children: List.generate(
-                          common.length,
-                          (i) => ChoiceChip(
-                                label: Text(common[i]),
-                                selected: common[i] == cantidad.text,
-                                onSelected: (selected) {
-                                  setState(() {
-                                    cantidad.text = common[i];
-                                  });
-                                },
-                              ))),
-                ],
-              ),
-            ),
+          
           ],
         ),
         floatingActionButton: Row(

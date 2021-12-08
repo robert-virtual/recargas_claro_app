@@ -25,15 +25,12 @@ class MyApp extends StatelessWidget {
             bottom: const TabBar(
               tabs:[
                 Tab(
-                  icon: Icon(Icons.power),
                   text: "Recargas",
                 ),
                 Tab(
-                  icon: Icon(Icons.phone),
                   text: "Paquetes",
                 ),
                 Tab(
-                  icon: Icon(Icons.settings),
                   text: "Ajustes",
                 )
               ] 
