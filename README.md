@@ -7,7 +7,7 @@
 - Olman Martinez
 - Roberto Castillo
 
-![menu](./screenshots/menu.jpeg)
+![menu](./screenshots/recargas.png)
 
 ## Recargas
 
@@ -16,7 +16,7 @@
 - Amy Garrido
 - Keren Castellanos
 
-![menu](./screenshots/recargas.jpeg)
+![pantalla de recargas](./screenshots/recargas.png)
 
 ## Paquetes
 
@@ -25,18 +25,19 @@
 - Caled Andrade
 - Leslie ordoñes
 
-![menu](./screenshots/paquetes.jpeg)
+![pantalla de paquetes](./screenshots/paquetes.png)
 
-![menu](./screenshots/paquete_seleccionado.jpeg)
+### Cambio de categoria en paquetes
 
-## Selecionar Paquete
+![cambio de categoria de paquetes](./screenshots/paquetes_categoria.png)
 
-> Encargados:
+### Paquete seleccionado
 
-- Roberto Castillo
-- olman Martinez
+![paquete seleccionado](./screenshots/paquetes_sleccionado.png)
 
-![menu](./screenshots/seleccionar_paquete.jpeg)
+### Paquete enviado
+
+![paquete enviado](./screenshots/paquete_enviado.png)
 
 ## Ajustes
 
@@ -45,4 +46,38 @@
 - Julisa delCid
 - Roberto Castillo
 
-![menu](./screenshots/ajustes.jpeg)
+![pantalla de ajustes](./screenshots/ajustes.png)
+
+### Historial
+
+![pantalla de historial](./screenshots/historial.png)
+
+#### Categorias en Historial
+
+- Ayer
+
+![categoria ayer](./screenshots/ayer.png)
+
+- Anteayer
+
+![categoria anteayer](./screenshots/anteayer.png)
+
+- Todas
+
+![categoria todas en historial](./screenshots/todas.png)
+
+#### Buscar en Historial
+
+![buscar en historial de ventas](./screenshots/buscar.png)
+
+- Resultados al ingresar el numero de telefono de un cliente
+
+![buscando en historial de ventas](./screenshots/buscando.png)
+
+- Resultado al hacer click en uno de los resultados
+
+![resultado seleccionado](./screenshots/resultado_seleccionado.png)
+
+### Pin
+
+![menu](./screenshots/resultado_seleccionado.png)
