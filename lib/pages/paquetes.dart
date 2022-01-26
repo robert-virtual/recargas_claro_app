@@ -8,7 +8,11 @@ import 'package:recargas_claro_app/widgets/recarga_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaquetesPage extends StatefulWidget {
-  const PaquetesPage({Key? key}) : super(key: key);
+  const PaquetesPage({
+    Key? key,
+    this.appbar = false,
+  }) : super(key: key);
+  final bool appbar;
 
   @override
   _PaquetesPageState createState() => _PaquetesPageState();
@@ -28,6 +32,30 @@ class _PaquetesPageState extends State<PaquetesPage> {
     obtenerRecargas();
   }
 
+  Widget cats() {
+    return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              Wrap(
+                spacing: 4.0,
+                children: List.generate(
+                    recargas.length,
+                    (i) => ChoiceChip(
+                          label: Text(recargas.keys.elementAt(i)),
+                          selected:
+                              mostrando == recargas.keys.elementAt(i),
+                          onSelected: (bool seleteed) {
+                            setState(() {
+                              selecioada = null;
+                              mostrando = recargas.keys.elementAt(i);
+                            });
+                          },
+                        )),
+              )
+            ]),
+          );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,39 +63,31 @@ class _PaquetesPageState extends State<PaquetesPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         foregroundColor: Theme.of(context).primaryColor,
-        title: inicializado == false
-            ? const Text("")
-            : SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  Wrap(
-                    spacing: 4.0,
-                    children: List.generate(
-                        recargas.length,
-                        (i) => ChoiceChip(
-                              label: Text(recargas.keys.elementAt(i)),
-                              selected: mostrando == recargas.keys.elementAt(i),
-                              onSelected: (bool seleteed) {
-                                setState(() {
-                                  selecioada = null;
-                                  mostrando = recargas.keys.elementAt(i);
-                                });
-                              },
-                            )),
-                  )
-                ]),
+        title: widget.appbar
+            ? const Text("Paquetes")
+            : inicializado == false
+                ? null
+                : cats(),
+        bottom: !widget.appbar 
+            ? null
+            : inicializado == false
+            ? null
+            : PreferredSize(
+                preferredSize: const Size.fromHeight(48.0),
+                child: cats()
               ),
+        
       ),
       body: selecioada != null
           ? Center(
               child: RecargaItem(
-                  recarga: selecioada!, 
-                  close: true,
-                  onPressed: () {
-                    setState(() {
-                      selecioada = null;
-                    });
-                  },
+                recarga: selecioada!,
+                close: true,
+                onPressed: () {
+                  setState(() {
+                    selecioada = null;
+                  });
+                },
               ),
             )
           : inicializado == true
@@ -88,7 +108,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
                   child: Text("Cargando..."),
                 ),
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
             margin: const EdgeInsets.only(left: 10),
@@ -120,6 +140,7 @@ class _PaquetesPageState extends State<PaquetesPage> {
               ],
             ),
           ),
+          const SizedBox(width: 10,),
           FloatingActionButton(
             onPressed: enviarRecarga,
             child: const Icon(Icons.send),
@@ -232,6 +253,4 @@ class _PaquetesPageState extends State<PaquetesPage> {
       inicializado = true;
     });
   }
-
-  
 }

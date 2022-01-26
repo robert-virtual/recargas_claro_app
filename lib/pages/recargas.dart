@@ -5,8 +5,8 @@ import 'package:recargas_claro_app/providers/ventas_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RecargasPage extends StatefulWidget {
-  const RecargasPage({Key? key}) : super(key: key);
-
+  const RecargasPage({Key? key,this.appbar = false}) : super(key: key);
+  final bool appbar;
   @override
   _RecargasPageState createState() => _RecargasPageState();
 }
@@ -19,23 +19,28 @@ class _RecargasPageState extends State<RecargasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+        appBar: widget.appbar ? AppBar(
+          title: const Text("Recargas"),
+        ): null,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          
-            const Text("Recargas Comunes",style: TextStyle(fontSize: 25),),
+            const Text(
+              "Recargas Comunes",
+              style: TextStyle(fontSize: 25),
+            ),
             Container(
               padding: const EdgeInsets.all(10),
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow:  [
+                boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0,2)
-                  )  
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2))
                 ],
               ),
               margin: const EdgeInsets.all(10),
@@ -60,7 +65,7 @@ class _RecargasPageState extends State<RecargasPage> {
                 ),
               ),
             ),
-              Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.5,
@@ -90,11 +95,10 @@ class _RecargasPageState extends State<RecargasPage> {
                 ),
               ),
             ),
-          
           ],
         ),
         floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
               margin: const EdgeInsets.only(left: 10),
@@ -126,6 +130,7 @@ class _RecargasPageState extends State<RecargasPage> {
                 ],
               ),
             ),
+            const SizedBox(width: 10,),
             FloatingActionButton(
               onPressed: enviarRecarga,
               child: const Icon(Icons.send),
@@ -182,7 +187,7 @@ class _RecargasPageState extends State<RecargasPage> {
       return;
     }
 
-    final cadena = "*135*1*${telefono.text}*$cantidad*$pin#";
+    final cadena = "*601*1*${telefono.text}*${cantidad.text}*$pin#";
     await FlutterPhoneDirectCaller.callNumber(cadena);
     showDialog(
         barrierDismissible: false,

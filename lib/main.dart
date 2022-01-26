@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recargas_claro_app/pages/ajustes.dart';
-import 'package:recargas_claro_app/pages/paquetes.dart';
-import 'package:recargas_claro_app/pages/recargas.dart';
+
+import 'package:recargas_claro_app/pages/simple_menu.dart';
+import 'package:recargas_claro_app/routed_app.dart';
 import 'package:recargas_claro_app/themes.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const RoutedApp());
 
 
 
@@ -21,33 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Recargas App',
-      home: DefaultTabController(
-        length: 3, 
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Recargas App"),
-            bottom: const TabBar(
-              tabs:[
-                Tab(
-                  text: "Recargas",
-                ),
-                Tab(
-                  text: "Paquetes",
-                ),
-                Tab(
-                  text: "Ajustes",
-                )
-              ] 
-            ),
-          ),
-          body: TabBarView(
-            children: [
-            RecargasPage(),
-            PaquetesPage(),
-            const AjustePages()
-          ],),
-        )
-      )
+      home: const SimpleMenu()
     );
   }
 }

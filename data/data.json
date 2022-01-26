@@ -10,7 +10,7 @@
     {
       "cod": "3*8",
       "description": "Llamadas Ilimitadas a Claro y 20 Minutos a Todas las Redes, Internet Ilimitado",
-      "duration": "2 Dia",
+      "duration": "2 Dias",
       "price": 50,
       "title": "Internet Ilimitado"
     },
@@ -31,13 +31,6 @@
   ],
   "llamadas": [
     {
-      "cod": "5*3",
-      "description": "A España",
-      "duration": "1 Dia",
-      "price": 30,
-      "title": "5 Minutos"
-    },
-    {
       "cod": "5*5",
       "description": "Todas las Redes Y USA",
       "duration": "1 Dia",
@@ -54,7 +47,7 @@
     {
       "cod": "5*7",
       "description": "Todas las Redes Y USA",
-      "duration": "1 Dias",
+      "duration": "1 Dia",
       "price": 35,
       "title": "45 Minutos"
     },
@@ -71,13 +64,6 @@
       "duration": "3 Dias",
       "price": 60,
       "title": "100 Minutos"
-    },
-    {
-      "cod": "5*10",
-      "description": "A Mexico",
-      "duration": "1 Dia",
-      "price": 22,
-      "title": "5 Minutos"
     }
   ],
   "Redes": [
@@ -126,14 +112,14 @@
       "title": "Super Recarga"
     },
     {
-      "cod": "9*5",
+      "cod": "9*6",
       "description": "15 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
       "duration": "10 Dias",
       "price": 150,
       "title": "Super Recarga"
     },
     {
-      "cod": "9*6",
+      "cod": "9*5",
       "description": "25 GB, 60 Min a Otras Redes y USA, Llmadas y mensajes ilimitados a Claro, WhatsApp ilimitado, Facebook, Twitter y 1 Amigo Favorito",
       "duration": "15 Dias",
       "price": 220,

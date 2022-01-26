@@ -3,7 +3,8 @@ import 'package:recargas_claro_app/pages/historial.dart';
 import 'package:recargas_claro_app/pages/pin.dart';
 
 class AjustePages extends StatefulWidget {
-  const AjustePages({Key? key}) : super(key: key);
+  const AjustePages({Key? key,this.appbar = false}) : super(key: key);
+  final bool appbar;
 
   @override
   _AjustePagesState createState() => _AjustePagesState();
@@ -17,6 +18,11 @@ class _AjustePagesState extends State<AjustePages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: widget.appbar 
+        ? AppBar(
+          title: const Text("Ajustes"),
+        )
+        : null,
       body: Column(
         children: [
           ListTile(

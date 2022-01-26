@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class PinPage extends StatefulWidget {
-  PinPage({Key? key}) : super(key: key);
+  const PinPage({Key? key}) : super(key: key);
 
   @override
   _PinPageState createState() => _PinPageState();
