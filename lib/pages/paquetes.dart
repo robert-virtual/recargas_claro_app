@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:recargas_claro_app/models/recarga.dart';
@@ -60,6 +62,20 @@ class _PaquetesPageState extends State<PaquetesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: ()async{
+            try{
+              final result = await InternetAddress.lookup("www.google.com");
+              if(result.isNotEmpty && result[0].rawAddress.isNotEmpty){
+                SharedPreferences pref = await SharedPreferences.getInstance();
+                await pref.remove("recargas");
+                obtenerRecargas();
+              }
+            }on SocketException catch(_){
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Not internet connection")));
+            }
+          }, icon: const Icon(Icons.refresh))
+        ],
         backgroundColor: Colors.white,
         elevation: 0,
         foregroundColor: Theme.of(context).primaryColor,

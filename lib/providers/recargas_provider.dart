@@ -1,16 +1,22 @@
 import 'dart:convert';
-
-import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:recargas_claro_app/models/recarga.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class _RecargasProvider {
 
 
+  late SharedPreferences _pref;
 
   Future<Map<String, List<Recarga>>> cargarDatos() async {
-    final data = await rootBundle.loadString("data/data.json");
-
-    final obj = jsonDecode(data);
+    _pref = await SharedPreferences.getInstance();
+    if(_pref.getString("recargas") == null){
+      print("refreshing recargas");
+      final data = (await http.get(Uri.https("raw.githubusercontent.com","/robert-virtual/recargas_claro_app/master/data/data.json"))).body;
+      await _pref.setString('recargas', data);
+    }
+    final data =  _pref.getString('recargas');
+    final obj = jsonDecode(data!);
 
     Map<String, List<dynamic>> mapa = Map.from(obj);
     Map<String, List<Recarga>> listaElementos = {};
