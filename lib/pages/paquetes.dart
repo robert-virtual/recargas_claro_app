@@ -36,26 +36,25 @@ class _PaquetesPageState extends State<PaquetesPage> {
 
   Widget cats() {
     return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
-              Wrap(
-                spacing: 4.0,
-                children: List.generate(
-                    recargas.length,
-                    (i) => ChoiceChip(
-                          label: Text(recargas.keys.elementAt(i)),
-                          selected:
-                              mostrando == recargas.keys.elementAt(i),
-                          onSelected: (bool seleteed) {
-                            setState(() {
-                              selecioada = null;
-                              mostrando = recargas.keys.elementAt(i);
-                            });
-                          },
-                        )),
-              )
-            ]),
-          );
+      scrollDirection: Axis.horizontal,
+      child: Row(children: [
+        Wrap(
+          spacing: 4.0,
+          children: List.generate(
+              recargas.length,
+              (i) => ChoiceChip(
+                    label: Text(recargas.keys.elementAt(i)),
+                    selected: mostrando == recargas.keys.elementAt(i),
+                    onSelected: (bool seleteed) {
+                      setState(() {
+                        selecioada = null;
+                        mostrando = recargas.keys.elementAt(i);
+                      });
+                    },
+                  )),
+        )
+      ]),
+    );
   }
 
   @override
@@ -63,18 +62,22 @@ class _PaquetesPageState extends State<PaquetesPage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: ()async{
-            try{
-              final result = await InternetAddress.lookup("www.google.com");
-              if(result.isNotEmpty && result[0].rawAddress.isNotEmpty){
-                SharedPreferences pref = await SharedPreferences.getInstance();
-                await pref.remove("recargas");
-                obtenerRecargas();
-              }
-            }on SocketException catch(_){
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Not internet connection")));
-            }
-          }, icon: const Icon(Icons.refresh))
+          IconButton(
+              onPressed: () async {
+                try {
+                  final result = await InternetAddress.lookup("www.google.com");
+                  if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    await pref.remove("recargas");
+                    obtenerRecargas();
+                  }
+                } on SocketException catch (_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Not internet connection")));
+                }
+              },
+              icon: const Icon(Icons.refresh))
         ],
         backgroundColor: Colors.white,
         elevation: 0,
@@ -84,15 +87,12 @@ class _PaquetesPageState extends State<PaquetesPage> {
             : inicializado == false
                 ? null
                 : cats(),
-        bottom: !widget.appbar 
+        bottom: !widget.appbar
             ? null
             : inicializado == false
-            ? null
-            : PreferredSize(
-                preferredSize: const Size.fromHeight(48.0),
-                child: cats()
-              ),
-        
+                ? null
+                : PreferredSize(
+                    preferredSize: const Size.fromHeight(48.0), child: cats()),
       ),
       body: selecioada != null
           ? Center(
@@ -156,7 +156,9 @@ class _PaquetesPageState extends State<PaquetesPage> {
               ],
             ),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           FloatingActionButton(
             onPressed: enviarRecarga,
             child: const Icon(Icons.send),

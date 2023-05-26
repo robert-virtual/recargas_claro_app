@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "recargas_claro_app" "\0"
+            VALUE "FileDescription", "Recargas y Paquetes Claro" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "recargas_claro_app" "\0"
+            VALUE "InternalName", "Recargas y Paquetes Claro" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "recargas_claro_app.exe" "\0"
-            VALUE "ProductName", "recargas_claro_app" "\0"
+            VALUE "ProductName", "Recargas y Paquetes Claro" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

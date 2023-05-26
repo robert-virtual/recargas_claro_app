@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SimpleMenu extends StatefulWidget {
   const SimpleMenu({Key? key}) : super(key: key);
 
@@ -9,18 +8,18 @@ class SimpleMenu extends StatefulWidget {
 }
 
 class _SimpleMenuState extends State<SimpleMenu> {
-  List<Map<String,dynamic>> pages =   [
-    {"name": const Text("Recargas"),  "page":"/recargas" },
-    {"name": const Text("Paquetes"),  "page":"/paquetes" },
-    {"name": const Text("Pin"),       "page":"/pin" },
-    {"name": const Text("Historial"), "page":"/historial" }
+  List<Map<String, dynamic>> pages = [
+    {"name": const Text("Recargas"), "page": "/recargas"},
+    {"name": const Text("Paquetes"), "page": "/paquetes"},
+    {"name": const Text("Pin"), "page": "/pin"},
+    {"name": const Text("Historial"), "page": "/historial"}
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Recargas App"),
+        title: const Text("Recargas/Paquetes Claro"),
       ),
       body: ListView.builder(
           itemCount: pages.length,
