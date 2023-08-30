@@ -1,4 +1,4 @@
-package com.example.recargas_claro_app
+package recargasclaroapp.io.github.robertvirtual
 
 import io.flutter.embedding.android.FlutterActivity
 

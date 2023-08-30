@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.recargas_claro_app">
+    package="recargasclaroapp.io.github.robertvirtual">
    <application
         android:label="Recargas y Paquetes Claro"
         android:name="${applicationName}"
